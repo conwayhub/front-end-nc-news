@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../api";
 import ArticleCard from "./ArticleCard.jsx";
+import SortByForm from "./sortByForm.jsx";
 
 class AllArticles extends Component {
   state = { loading: true, articles: null };
@@ -13,6 +14,10 @@ class AllArticles extends Component {
     });
   };
 
+  componentDidUpdate() {
+    this.getAllArticles();
+  }
+
   componentDidMount() {
     this.getAllArticles();
   }
@@ -23,6 +28,7 @@ class AllArticles extends Component {
       <p>Leave me be, I'm Loading!</p>
     ) : (
       <ul>
+        <SortByForm />
         {this.state.articles.map(article => {
           return <ArticleCard article={article} />;
         })}
