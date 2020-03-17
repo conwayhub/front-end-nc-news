@@ -13,8 +13,12 @@ class AllArticles extends Component {
     });
   };
 
-  componentDidUpdate() {
-    this.getAllArticles();
+  handleSortSubmit = () => {};
+
+  componentDidUpdate(oldProps, oldState) {
+    if (oldProps.topic !== this.props.topic) {
+      this.getAllArticles();
+    }
   }
   componentDidMount() {
     this.getAllArticles();
@@ -25,9 +29,8 @@ class AllArticles extends Component {
       <p>Leave me be, I'm Loading!</p>
     ) : (
       <ul>
-        <SortByForm />
         {this.state.articles.map(article => {
-          return <ArticleCard article={article} />;
+          return <ArticleCard key={article.article_id} article={article} />;
         })}
       </ul>
     );

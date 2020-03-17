@@ -4,6 +4,6 @@ const instance = axios.create({
   baseURL: "https://conways-nc-news.herokuapp.com/api"
 });
 
-export const fetchArticles = topic => {
-  return instance.get("/articles", { params: { topic } });
+export const fetchArticles = params => {
+  return instance.get("/articles", { params });
 };

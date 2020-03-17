@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 
 class SortByForm extends Component {
-  state = { sort: null };
+  state = { sort_by: null };
+
+  handleChange = event => {
+    const sort_by = event.target.value;
+    this.setState({ sort_by });
+  };
 
   render() {
     return (
       <form>
-        Sort Articles By:{" "}
-        <select id="sort_by" name="sort_by">
+        Sort Articles By:
+        <select onChange={this.handleChange} id="sort_by" name="sort_by">
           <option value="created_at">Date</option>
           <option value="comment_count">Comments</option>
           <option value="votes">Votes</option>
         </select>
+        <button>Sort</button>
       </form>
     );
   }
