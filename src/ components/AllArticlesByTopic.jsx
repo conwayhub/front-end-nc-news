@@ -45,7 +45,7 @@ class AllArticles extends Component {
       <ul>
         <SortByForm handleSortSubmit={this.handleSortSubmit} />
         {this.state.articles.map(article => {
-          return <ArticleCard key={article.article_id} article={article} />;
+          return><ArticleCard key={article.article_id} article={article} />;
         })}
       </ul>
     );
