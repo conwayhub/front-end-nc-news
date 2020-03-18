@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Nav />
       <Router>
-        <AllArticles path="/articles" />
+        <AllArticlesByTopic path="/articles/*" />
         <AllArticlesByTopic path="/articles/topic/:topic" />
       </Router>
     </div>

@@ -4,7 +4,7 @@ import { Router, Link } from "@reach/router";
 const Nav = () => {
   return (
     <ul>
-      <Link to="/articles">
+      <Link to="/articles/">
         <li>Gimmie The Works Please.</li>
       </Link>
       <Link to="/articles/topic/football">

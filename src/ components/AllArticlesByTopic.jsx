@@ -6,13 +6,19 @@ import SortByForm from "./sortByForm.jsx";
 class AllArticles extends Component {
   state = { loading: true, articles: null };
 
+  handleSortSubmit = sortObject => {
+    console.log(this.props, "before");
+    this.setState({ sort_by: sortObject });
+    this.getAllArticles();
+  };
+
   getAllArticles = () => {
     let passingParams = {};
     if (this.props.topic !== undefined) {
       passingParams.topic = this.props.topic;
     }
-    if (this.props.sort_by !== undefined) {
-      passingParams.sort_by = this.props.sort_by;
+    if (this.state.sort_by !== undefined) {
+      passingParams.sort_by = this.state.sort_by;
     }
     api.fetchArticles(passingParams).then(res => {
       const { articles } = res.data;
@@ -22,6 +28,8 @@ class AllArticles extends Component {
 
   componentDidUpdate(oldProps, oldState) {
     if (oldProps.topic !== this.props.topic) {
+      this.getAllArticles();
+    } else if (oldState.sort_by !== this.state.sort_by) {
       this.getAllArticles();
     }
   }
@@ -35,7 +43,7 @@ class AllArticles extends Component {
       <p>Leave me be, I'm Loading!</p>
     ) : (
       <ul>
-        <SortByForm />
+        <SortByForm handleSortSubmit={this.handleSortSubmit} />
         {this.state.articles.map(article => {
           return <ArticleCard key={article.article_id} article={article} />;
         })}

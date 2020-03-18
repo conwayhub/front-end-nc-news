@@ -10,7 +10,12 @@ class SortByForm extends Component {
 
   render() {
     return (
-      <form>
+      <form
+        onSubmit={event => {
+          event.preventDefault();
+          this.props.handleSortSubmit(this.state.sort_by);
+        }}
+      >
         Sort Articles By:
         <select onChange={this.handleChange} id="sort_by" name="sort_by">
           <option value="created_at">Date</option>
