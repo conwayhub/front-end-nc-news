@@ -11,12 +11,12 @@ class ToggleButton extends React.Component {
   render() {
     return (
       <>
-        {this.state.visible && <div>{this.props.children}</div>}
         <button onClick={this.showComponent}>
           {this.state.visible
             ? "Hide" + this.props.component
             : this.props.component}
         </button>
+        {this.state.visible && <div>{this.props.children}</div>}
       </>
     );
   }

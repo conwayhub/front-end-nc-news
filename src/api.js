@@ -15,3 +15,7 @@ export const fetchArticleById = article_id => {
 export const fetchCommentsByArticle = article_id => {
   return instance.get(`/articles/${article_id}/comments`);
 };
+
+export const patchVotes = (route, num) => {
+  return instance.patch(`${route}`, { inc_votes: num });
+};

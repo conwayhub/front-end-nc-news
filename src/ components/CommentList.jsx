@@ -35,7 +35,7 @@ class CommentList extends React.Component {
     ) : (
       <ul>
         {this.state.commentArray.map(comment => {
-          return <CommentCard comment={comment} />;
+          return <CommentCard key={comment.comment_id} comment={comment} />;
         })}
       </ul>
     );
