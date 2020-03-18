@@ -2,6 +2,8 @@ import React from "react";
 import * as api from "../api";
 import Error from "./Error";
 import Loading from "./Loading";
+import ToggleButton from "./ToggleButton";
+import CommentList from "./CommentList";
 
 class ArticleById extends React.Component {
   state = { article: {}, loading: true, error: false };
@@ -52,6 +54,10 @@ class ArticleById extends React.Component {
         <b> Written by: </b> {author} <b> Published: </b> {created_at}
         <b> Topic: </b> {topic}
         <p>{body}</p>
+        <ToggleButton component=" New Comment"></ToggleButton>
+        <ToggleButton component=" All Comments">
+          <CommentList id={this.props.id} />
+        </ToggleButton>
       </>
     );
   }

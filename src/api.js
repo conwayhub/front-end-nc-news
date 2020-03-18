@@ -11,3 +11,7 @@ export const fetchArticles = params => {
 export const fetchArticleById = article_id => {
   return instance.get(`/articles/${article_id}`);
 };
+
+export const fetchCommentsByArticle = article_id => {
+  return instance.get(`/articles/${article_id}/comments`);
+};

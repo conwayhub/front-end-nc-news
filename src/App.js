@@ -5,6 +5,7 @@ import Header from "./ components/Header";
 import Nav from "./ components/Nav";
 import AllArticlesByTopic from "./ components/AllArticlesByTopic";
 import ArticleById from "./ components/ArticleById";
+import Error from "./ components/Error";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <AllArticlesByTopic path="/articles/*" />
         <AllArticlesByTopic path="/articles/topic/:topic" />
         <ArticleById path="/articles/id/:id" />
+        <Error default />
       </Router>
     </div>
   );

@@ -3,9 +3,10 @@ import * as api from "../api";
 import ArticleCard from "./ArticleCard.jsx";
 import SortByForm from "./sortByForm.jsx";
 import Loading from "./Loading";
+import Error from "./Error";
 
 class AllArticles extends Component {
-  state = { loading: true, articles: null };
+  state = { loading: true, articles: null, error: false };
 
   handleSortSubmit = sortObject => {
     this.setState({ sort_by: sortObject });
@@ -20,10 +21,15 @@ class AllArticles extends Component {
     if (this.state.sort_by !== undefined) {
       passingParams.sort_by = this.state.sort_by;
     }
-    api.fetchArticles(passingParams).then(res => {
-      const { articles } = res.data;
-      this.setState({ articles, loading: false });
-    });
+    api
+      .fetchArticles(passingParams)
+      .then(res => {
+        const { articles } = res.data;
+        this.setState({ articles, loading: false, error: false });
+      })
+      .catch(err => {
+        this.setState({ error: err });
+      });
   };
 
   componentDidUpdate(oldProps, oldState) {
@@ -39,7 +45,11 @@ class AllArticles extends Component {
   }
 
   render() {
-    return this.state.loading === true ? (
+    return this.state.error === true ? (
+      <>
+        <Error />
+      </>
+    ) : this.state.loading === true ? (
       <>
         <Loading />
       </>
