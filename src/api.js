@@ -29,8 +29,6 @@ export const checkUser = username => {
 };
 
 export const postComment = (article_id, username, body) => {
-  console.log(username.typeof, body);
-  console.log(article_id, "article_id");
   return instance.post(`/articles/${article_id}/comments`, {
     username: username,
     body: body

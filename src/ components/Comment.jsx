@@ -1,9 +1,6 @@
 import React from "react";
-import * as api from "../api";
 import VotesComponent from "./VotesComponents";
-import Loading from "./Loading";
 import DeleteButton from "./deleteButton";
-import { render } from "@testing-library/react";
 
 class CommentCard extends React.Component {
   state = { deleted: false };
@@ -27,7 +24,6 @@ class CommentCard extends React.Component {
   render() {
     const { author, body, votes, comment_id } = this.props.comment;
 
-    console.log(this.state);
     return this.state.deleted === true ? (
       <p>Comment Deleted :)</p>
     ) : (

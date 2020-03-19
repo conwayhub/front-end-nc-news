@@ -1,6 +1,7 @@
 import React from "react";
-import CommentCard from "./Comment";
 import * as api from "../api";
+
+//REMEMBER TO DEAL WITH EMPTY COMMENTS AND ERROR HANDLING x
 
 class NewCommentForm extends React.Component {
   state = { loading: true, error: null, comment: "", posted: null };

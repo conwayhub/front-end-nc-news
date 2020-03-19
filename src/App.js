@@ -26,7 +26,7 @@ class App extends React.Component {
         {this.state.user === "" && <LoginForm setUser={this.setUser} />}
         {this.state.user && (
           <p>
-            <img src={this.state.user.avatar_url} />
+            <img alt="user avatar" src={this.state.user.avatar_url} />
             Hi {this.state.user.name}, you are logged in!{" "}
             <button onClick={this.handleLogOut}>Log out</button>
           </p>

@@ -15,7 +15,6 @@ class VotesComponent extends React.Component {
     this.changeVotes(num);
   };
   render() {
-    console.log(this.props.type, this.props.id);
     return (
       <>
         <p>
