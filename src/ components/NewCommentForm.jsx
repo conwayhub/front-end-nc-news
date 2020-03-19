@@ -2,8 +2,9 @@ import React from "react";
 
 class NewCommentForm extends React.Component {
   state = { loading: true, error: false, user: "toots", comment: "" };
+
   render() {
-    return this.state.user === null ? (
+    return this.state.user === "" ? (
       <h3>Hi Guest! Log in to post a comment</h3>
     ) : (
       <>

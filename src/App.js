@@ -12,7 +12,7 @@ class App extends React.Component {
   state = { user: "" };
 
   setUser = user => {
-    this.setState({ user });
+    this.setState({ user: user });
   };
 
   handleLogOut = event => {
@@ -26,7 +26,8 @@ class App extends React.Component {
         {this.state.user === "" && <LoginForm setUser={this.setUser} />}
         {this.state.user && (
           <p>
-            Hi {this.state.user}, you are logged in!{" "}
+            <img src={this.state.user.avatar_url} />
+            Hi {this.state.user.name}, you are logged in!{" "}
             <button onClick={this.handleLogOut}>Log out</button>
           </p>
         )}
@@ -35,7 +36,10 @@ class App extends React.Component {
         <Router>
           <AllArticlesByTopic path="/articles/*" />
           <AllArticlesByTopic path="/articles/topic/:topic" />
-          <ArticleById path="/articles/id/:id" user={this.state.user} />
+          <ArticleById
+            path="/articles/id/:id"
+            user={this.state.user.username}
+          />
           <Error default />
         </Router>
       </div>

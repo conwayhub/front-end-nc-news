@@ -1,7 +1,8 @@
 import React from "react";
+import * as api from "../api";
 
 class LoginForm extends React.Component {
-  state = { user: "" };
+  state = { user: "", error: false };
 
   handleChange = event => {
     this.setState({ user: event.target.value });
@@ -9,7 +10,15 @@ class LoginForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.setUser(this.state.user);
+    api
+      .checkUser(this.state.user)
+      .then(res => {
+        this.props.setUser(res.data.user);
+      })
+      .catch(err => {
+        this.setState({ error: true });
+      });
+    // this.props.setUser(this.state.user);
   };
 
   render() {
@@ -24,6 +33,7 @@ class LoginForm extends React.Component {
           />
           <button>Log in</button>
         </label>
+        {this.state.error && <p>User Not Found</p>}
       </form>
     );
   }

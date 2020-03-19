@@ -23,3 +23,7 @@ export const patchVotes = (route, num) => {
 export const deleteComment = comment_id => {
   return instance.delete(`/comments/${comment_id}`);
 };
+
+export const checkUser = username => {
+  return instance.get(`users/${username}`);
+};
