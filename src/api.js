@@ -19,3 +19,7 @@ export const fetchCommentsByArticle = article_id => {
 export const patchVotes = (route, num) => {
   return instance.patch(`${route}`, { inc_votes: num });
 };
+
+export const deleteComment = comment_id => {
+  return instance.delete(`/comments/${comment_id}`);
+};

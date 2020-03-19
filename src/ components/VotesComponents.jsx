@@ -16,9 +16,8 @@ class VotesComponent extends React.Component {
     this.changeVotes(num);
   };
   render() {
-    console.log(this.props);
     return (
-      <p>
+      <>
         <p>
           <b>Votes: </b>
           {this.state.votes + this.props.votes}
@@ -37,7 +36,7 @@ class VotesComponent extends React.Component {
         >
           Punish
         </button>
-      </p>
+      </>
     );
   }
 }

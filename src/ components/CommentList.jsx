@@ -12,18 +12,22 @@ class CommentList extends React.Component {
       this.setState({
         commentArray: res.data.comments,
         loading: false,
-        error: false
+        error: false,
+        user: ""
       });
     });
   };
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.user !== this.props.user) {
+      this.setState({ user: this.props.user });
+    }
+  }
 
   componentDidMount() {
     this.settingCommentArray();
   }
-  componentDidUpdate() {}
 
   render() {
-    console.log(this.state);
     return this.state.error ? (
       <>
         <Error />
@@ -35,7 +39,13 @@ class CommentList extends React.Component {
     ) : (
       <ul>
         {this.state.commentArray.map(comment => {
-          return <CommentCard key={comment.comment_id} comment={comment} />;
+          return (
+            <CommentCard
+              key={comment.comment_id}
+              comment={comment}
+              user={this.props.user}
+            />
+          );
         })}
       </ul>
     );

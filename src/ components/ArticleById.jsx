@@ -14,14 +14,12 @@ class ArticleById extends React.Component {
     api
       .fetchArticleById(this.props.id)
       .then(res => {
-        console.log(res.data.article, "response");
         this.setState({
           article: res.data.article,
           loading: false
         });
       })
       .catch(err => {
-        console.log(err);
         this.setState({ error: true });
       });
   };
@@ -46,12 +44,11 @@ class ArticleById extends React.Component {
   // }
 
   componentDidMount() {
-    console.log("mounting");
     this.getArticle();
   }
 
   render() {
-    console.log(this.state.article.article_id);
+    console.log(this.props.user, "ArticleById");
     let {
       article_id,
       title,
@@ -81,10 +78,10 @@ class ArticleById extends React.Component {
         </p>
         <VotesComponent route={`/articles/${article_id}`} votes={votes} />
         <ToggleButton component=" New Comment">
-          <NewCommentForm />
+          <NewCommentForm user={this.props.user} />
         </ToggleButton>
         <ToggleButton component=" All Comments">
-          <CommentList id={this.props.id} />
+          <CommentList id={this.props.id} user={this.props.user} />
         </ToggleButton>
       </>
     );
