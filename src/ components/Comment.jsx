@@ -6,7 +6,7 @@ import DeleteButton from "./deleteButton";
 import { render } from "@testing-library/react";
 
 class CommentCard extends React.Component {
-  state = { loading: true, user: "", showdelete: true, deleted: false };
+  state = { deleted: false };
 
   // changeVotes = num => {
   //   let route = ;
@@ -18,55 +18,32 @@ class CommentCard extends React.Component {
 
   // const comment = props.comment;
 
-  setCommentData() {
-    this.setState({
-      ...this.props.comment,
-      loading: false,
-      deleted: false,
-      user: this.props.user,
-      showdelete: this.props.user === this.props.comment.author
-    });
-  }
+  //all u need in state is deleted: true, move logic into line & use props.
 
   setAsDeleted = () => {
     this.setState({ deleted: true });
   };
 
-  componentDidMount() {
-    this.setCommentData();
-  }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.user !== this.props.user) {
-      this.setCommentData();
-    }
-  }
-
   render() {
+    const { author, body, votes, comment_id } = this.props.comment;
+
     console.log(this.state);
     return this.state.deleted === true ? (
       <p>Comment Deleted :)</p>
-    ) : this.state.loading === true ? (
-      <Loading />
     ) : (
       <li>
         <p>
-          <b>User: </b> {this.state.author}
+          <b>User: </b> {author}
         </p>
         <b>Comment:</b>
-        <p>{this.state.body}</p>
+        <p>{body}</p>
 
         <>
-          {this.state.showdelete && (
-            <DeleteButton
-              setAsDeleted={this.setAsDeleted}
-              id={this.state.comment_id}
-            />
+          {this.props.user === this.props.comment.author && (
+            <DeleteButton setAsDeleted={this.setAsDeleted} id={comment_id} />
           )}
         </>
-        <VotesComponent
-          route={`/comments/${this.state.comment_id}`}
-          votes={this.state.votes}
-        />
+        <VotesComponent type="comments" id={comment_id} votes={votes} />
       </li>
     );
   }

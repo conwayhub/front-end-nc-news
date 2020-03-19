@@ -24,18 +24,19 @@ class ArticleById extends React.Component {
       });
   };
 
-  changeVotes = num => {
-    let route = `/articles/${this.state.article.article_id}`;
-    api.patchVotes(route, num);
-    this.setState(currentState => {
-      return {
-        article: {
-          ...currentState.article,
-          votes: currentState.article.votes + num
-        }
-      };
-    });
-  };
+  // changeVotes = num => {
+  //   //move the route into .api articles passed as a parameter x
+  //   let route = `/articles/${this.state.article.article_id}`;
+  //   api.patchVotes(route, num);
+  //   this.setState(currentState => {
+  //     return {
+  //       article: {
+  //         ...currentState.article,
+  //         votes: currentState.article.votes + num
+  //       }
+  //     };
+  //   });
+  // };
 
   // componentDidUpdate(oldProps, oldState) {
   //   if (oldState.votes !== this.state.votes) {
@@ -76,9 +77,9 @@ class ArticleById extends React.Component {
         <p>
           <b>Comments:</b> {comment_count}
         </p>
-        <VotesComponent route={`/articles/${article_id}`} votes={votes} />
+        <VotesComponent type="articles" id={article_id} votes={votes} />
         <ToggleButton component=" New Comment">
-          <NewCommentForm user={this.props.user} />
+          <NewCommentForm user={this.props.user} article_id={article_id} />
         </ToggleButton>
         <ToggleButton component=" All Comments">
           <CommentList id={this.props.id} user={this.props.user} />

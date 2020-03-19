@@ -2,7 +2,7 @@ import React from "react";
 import * as api from "../api";
 
 class LoginForm extends React.Component {
-  state = { user: "", error: false };
+  state = { user: "", error: null };
 
   handleChange = event => {
     this.setState({ user: event.target.value });

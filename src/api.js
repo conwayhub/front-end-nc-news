@@ -16,8 +16,8 @@ export const fetchCommentsByArticle = article_id => {
   return instance.get(`/articles/${article_id}/comments`);
 };
 
-export const patchVotes = (route, num) => {
-  return instance.patch(`${route}`, { inc_votes: num });
+export const patchVotes = (type, id, num) => {
+  return instance.patch(`/${type}/${id}`, { inc_votes: num });
 };
 
 export const deleteComment = comment_id => {
@@ -26,4 +26,13 @@ export const deleteComment = comment_id => {
 
 export const checkUser = username => {
   return instance.get(`users/${username}`);
+};
+
+export const postComment = (article_id, username, body) => {
+  console.log(username.typeof, body);
+  console.log(article_id, "article_id");
+  return instance.post(`/articles/${article_id}/comments`, {
+    username: username,
+    body: body
+  });
 };

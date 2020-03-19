@@ -45,14 +45,10 @@ class AllArticles extends Component {
   }
 
   render() {
-    return this.state.error === true ? (
-      <>
-        <Error />
-      </>
-    ) : this.state.loading === true ? (
-      <>
-        <Loading />
-      </>
+    return this.state.error ? (
+      <Error />
+    ) : this.state.loading ? (
+      <Loading />
     ) : (
       <ul>
         <SortByForm handleSortSubmit={this.handleSortSubmit} />
