@@ -4,24 +4,34 @@ import * as api from "../api";
 //REMEMBER TO DEAL WITH EMPTY COMMENTS AND ERROR HANDLING x
 
 class NewCommentForm extends React.Component {
-  state = { loading: true, error: null, comment: "", posted: null };
+  state = {
+    loading: true,
+    error: null,
+    comment: "",
+    posted: null,
+    unposted: false
+  };
 
   handleSubmit = event => {
     event.preventDefault();
+    if (this.state.comment === "") {
+      this.setState({ unposted: true });
+    } else {
+      api
+        .postComment(this.props.article_id, this.props.user, this.state.comment)
+        .catch(err => {
+          console.dir(err);
+          this.setState({ error: err });
+        });
 
-    api
-      .postComment(this.props.article_id, this.props.user, this.state.comment)
-      .catch(err => {
-        console.dir(err);
-        this.setState({ error: err });
+      this.setState(currentState => {
+        return {
+          unposted: false,
+          posted: currentState.comment,
+          comment: ""
+        };
       });
-
-    this.setState(currentState => {
-      return {
-        posted: currentState.comment,
-        comment: ""
-      };
-    });
+    }
   };
 
   handleChange = event => {
@@ -46,6 +56,7 @@ class NewCommentForm extends React.Component {
             <button>Submit</button>
           </label>
         </form>
+        {this.state.unposted && <p>No comment entered!</p>}
         {this.state.posted && (
           <>
             <p>Great! Comment Posted!</p>
