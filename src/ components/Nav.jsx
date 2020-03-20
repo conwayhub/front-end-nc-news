@@ -1,20 +1,23 @@
 import React from "react";
 import { Link } from "@reach/router";
+import styles from "./Nav.module.css";
 
 const Nav = () => {
   return (
-    <ul>
+    <ul className={styles.navLinks}>
       <Link to="/articles/">
-        <li>Gimmie The Works Please.</li>
+        <li className={styles.navButton}>Gimmie The Works Please.</li>
       </Link>
       <Link to="/articles/topic/football">
-        <li>kick that ball long and tall</li>
+        <li className={styles.navButton}>kick that ball long and tall</li>
       </Link>
       <Link to="/articles/topic/cooking">
-        <li>Serve the great devourer</li>
+        <li className={styles.navButton}>Serve the great devourer</li>
       </Link>
       <Link to="/articles/topic/coding">
-        <li>The Techno Bourgoirse In The Apocalyse</li>
+        <li className={styles.navButton}>
+          The Techno Bourgoirse In The Apocalyse
+        </li>
       </Link>
     </ul>
   );

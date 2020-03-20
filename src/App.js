@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import styles from "./App.module.css";
 import { Router } from "@reach/router";
 import Header from "./ components/Header";
 import Nav from "./ components/Nav";
@@ -31,7 +31,7 @@ class App extends React.Component {
             <button onClick={this.handleLogOut}>Log out</button>
           </p>
         )}
-        <Header />
+        <Header className="header" />
         <Nav />
         <Router>
           <AllArticlesByTopic path="/articles/" />

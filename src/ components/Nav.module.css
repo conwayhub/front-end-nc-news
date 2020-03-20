@@ -1,0 +1,10 @@
+.navLinks {
+  justify-content: space-evenly;
+  list-style: none;
+  display: inline-flex;
+  background-color: silver;
+  width: 90%;
+}
+
+.navButton {
+}
