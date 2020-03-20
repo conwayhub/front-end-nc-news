@@ -5,17 +5,22 @@ import Error from "./Error";
 import CommentCard from "./Comment";
 
 class CommentList extends React.Component {
-  state = { commentArray: [], loading: true, error: false };
+  state = { commentArray: [], loading: true, error: null };
 
   settingCommentArray = () => {
-    api.fetchCommentsByArticle(this.props.id).then(res => {
-      this.setState({
-        commentArray: res.data.comments,
-        loading: false,
-        error: false,
-        user: ""
+    api
+      .fetchCommentsByArticle(this.props.id)
+      .then(res => {
+        this.setState({
+          commentArray: res.data.comments,
+          loading: false,
+          error: null,
+          user: ""
+        });
+      })
+      .catch(err => {
+        this.setState({ error: err.response });
       });
-    });
   };
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.user !== this.props.user) {

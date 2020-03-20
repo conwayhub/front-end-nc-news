@@ -6,7 +6,7 @@ import Loading from "./Loading";
 import Error from "./Error";
 
 class AllArticles extends Component {
-  state = { loading: true, articles: null, error: false };
+  state = { loading: true, articles: null, error: null };
 
   handleSortSubmit = sortObject => {
     this.setState({ sort_by: sortObject });
@@ -25,10 +25,10 @@ class AllArticles extends Component {
       .fetchArticles(passingParams)
       .then(res => {
         const { articles } = res.data;
-        this.setState({ articles, loading: false, error: false });
+        this.setState({ articles, loading: false, error: null });
       })
       .catch(err => {
-        this.setState({ error: err });
+        this.setState({ error: err.response });
       });
   };
 
@@ -46,7 +46,7 @@ class AllArticles extends Component {
 
   render() {
     return this.state.error ? (
-      <Error />
+      <Error error={this.state.error} />
     ) : this.state.loading ? (
       <Loading />
     ) : (

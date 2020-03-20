@@ -8,7 +8,7 @@ import VotesComponent from "./VotesComponents";
 import NewCommentForm from "./NewCommentForm";
 
 class ArticleById extends React.Component {
-  state = { article: {}, loading: true, error: false };
+  state = { article: {}, loading: true, error: null };
 
   getArticle = () => {
     api
@@ -20,7 +20,7 @@ class ArticleById extends React.Component {
         });
       })
       .catch(err => {
-        this.setState({ error: true });
+        this.setState({ error: err.response });
       });
   };
 
@@ -49,7 +49,6 @@ class ArticleById extends React.Component {
   }
 
   render() {
-    console.log(this.props.user, "ArticleById");
     let {
       article_id,
       title,
@@ -60,9 +59,9 @@ class ArticleById extends React.Component {
       created_at,
       comment_count
     } = this.state.article;
-    return this.state.error === true ? (
+    return this.state.error ? (
       <>
-        <Error />
+        <Error error={this.state.error} />
       </>
     ) : this.state.loading === true ? (
       <>

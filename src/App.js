@@ -34,6 +34,7 @@ class App extends React.Component {
         <Header />
         <Nav />
         <Router>
+          <AllArticlesByTopic path="/articles/" />
           <AllArticlesByTopic path="/articles/*" />
           <AllArticlesByTopic path="/articles/topic/:topic" />
           <ArticleById
