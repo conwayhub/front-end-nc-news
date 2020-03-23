@@ -6,22 +6,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Nav = () => {
   return (
     <ul className={styles.navLinks}>
-      <Link to="/articles/">
-        <FontAwesomeIcon icon="globe-americas" />
-        <li className={styles.navButton}>Gimmie The Works Please.</li>
+      <Link to="/articles/" className={styles.navButton}>
+        <li>
+          <FontAwesomeIcon icon="globe-americas" />
+          <br />
+          ONE EVERYTHING.
+        </li>
       </Link>
-      <Link to="/articles/topic/football">
-        <FontAwesomeIcon icon="futbol" />
-        <li className={styles.navButton}> kick that ball long and tall</li>
+      <Link to="/articles/topic/football" className={styles.navButton}>
+        <li>
+          <FontAwesomeIcon icon="futbol" />
+          <br />
+          KICK THE BALL LONG AND TALL
+        </li>
       </Link>
-      <Link to="/articles/topic/cooking">
-        <FontAwesomeIcon icon="pizza-slice" />{" "}
-        <li className={styles.navButton}>Serve the great devourer</li>
+      <Link to="/articles/topic/cooking" className={styles.navButton}>
+        <li>
+          <FontAwesomeIcon icon="pizza-slice" />
+          <br />O HOW I HUNGER{" "}
+        </li>
       </Link>
-      <Link to="/articles/topic/coding">
-        <FontAwesomeIcon icon={["fab", "react"]} />{" "}
-        <li className={styles.navButton}>
-          The Techno Bourgoirse In The Apocalyse
+      <Link to="/articles/topic/coding" className={styles.navButton}>
+        <li>
+          <FontAwesomeIcon icon={["fab", "react"]} />
+          <br />
+          TECHNO BOURGOIS APOCALYPSE
         </li>
       </Link>
     </ul>

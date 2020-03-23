@@ -1,6 +1,11 @@
 .NcHeadLine {
+  font-family: "Droid Serif";
+  font-size: 72pt;
   font-style: italic;
   color: gold;
+  background: -webkit-linear-gradient(gold, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .cssmarquee {
