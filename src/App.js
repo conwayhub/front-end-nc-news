@@ -7,6 +7,15 @@ import AllArticlesByTopic from "./ components/AllArticlesByTopic";
 import ArticleById from "./ components/ArticleById";
 import Error from "./ components/Error";
 import LoginForm from "./ components/LoginForm";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import {
+  faPizzaSlice,
+  faFutbol,
+  faGlobeAmericas
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(fab, faPizzaSlice, faFutbol, faGlobeAmericas);
 
 class App extends React.Component {
   state = { user: "" };
