@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "@reach/router";
+import styles from "./ArticleCard.module.css";
 
 const ArticleCard = props => {
   const article = props.article;
   const string = "/articles/id/" + props.article.article_id;
   return (
-    <li>
-      <Link to={string}>
+    <li className={styles.Card}>
+      <Link to={string} className={styles.link}>
         <h2>{article.title}</h2>
       </Link>
       <p>Written By: {article.author}</p>

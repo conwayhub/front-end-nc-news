@@ -2,7 +2,6 @@ import React from "react";
 import * as api from "../api";
 import styles from "./LoginForm.module.css";
 
-
 class LoginForm extends React.Component {
   state = { user: "jessjelly", error: null };
 
@@ -33,9 +32,8 @@ class LoginForm extends React.Component {
             value={this.state.user}
             onChange={this.handleChange}
           />
-          <button>Log in</button>
+          <button>LOG IN</button> {this.state.error && <>User Not Found</>}
         </label>
-        {this.state.error && <p>User Not Found</p>}
       </form>
     );
   }

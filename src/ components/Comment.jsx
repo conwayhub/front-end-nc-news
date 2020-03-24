@@ -1,21 +1,9 @@
 import React from "react";
 import VotesComponent from "./VotesComponents";
-import DeleteButton from "./deleteButton";
+import DeleteButton from "./DeleteButton";
 
 class CommentCard extends React.Component {
   state = { deleted: false };
-
-  // changeVotes = num => {
-  //   let route = ;
-  //   api.patchVotes(route, num);
-  //   this.setState(currentState => {
-  //     return { votes: currentState.votes + num };
-  //   });
-  // };
-
-  // const comment = props.comment;
-
-  //all u need in state is deleted: true, move logic into line & use props.
 
   setAsDeleted = () => {
     this.setState({ deleted: true });

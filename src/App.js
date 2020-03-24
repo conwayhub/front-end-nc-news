@@ -12,10 +12,12 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import {
   faPizzaSlice,
   faFutbol,
-  faGlobeAmericas
+  faGlobeAmericas,
+  faCoffee,
+  faCog
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(fab, faPizzaSlice, faFutbol, faGlobeAmericas);
+library.add(fab, faPizzaSlice, faFutbol, faGlobeAmericas, faCoffee, faCog);
 
 class App extends React.Component {
   state = { user: "" };
@@ -34,11 +36,11 @@ class App extends React.Component {
       <div>
         {this.state.user === "" && <LoginForm setUser={this.setUser} />}
         {this.state.user && (
-          <p>
+          <div className={styles.loggedIn}>
             <img alt="user avatar" src={this.state.user.avatar_url} />
             Hi {this.state.user.name}, you are logged in!{" "}
-            <button onClick={this.handleLogOut}>Log out</button>
-          </p>
+            <button onClick={this.handleLogOut}>LOG OUT</button>
+          </div>
         )}
         <Header className="header" />
         <Nav />

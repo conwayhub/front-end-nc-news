@@ -4,6 +4,7 @@ import ArticleCard from "./ArticleCard.jsx";
 import SortByForm from "./SortByForm.jsx";
 import Loading from "./Loading";
 import Error from "./Error";
+import styles from "./AllArticlesByTopic.module.css";
 
 class AllArticles extends Component {
   state = { loading: true, articles: null, error: null, sort_by: null };
@@ -52,7 +53,7 @@ class AllArticles extends Component {
     ) : (
       <>
         <SortByForm handleSortSubmit={this.handleSortSubmit} />
-        <ul>
+        <ul className={styles.ul}>
           {this.state.articles.map(article => {
             return <ArticleCard key={article.article_id} article={article} />;
           })}

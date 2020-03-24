@@ -24,7 +24,7 @@ class SortByForm extends Component {
           <option value="comment_count">Comments</option>
           <option value="votes">Votes</option>
         </select>
-        <button>Sort</button>
+        <button>SORT</button>
       </form>
     );
   }

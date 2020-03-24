@@ -24,26 +24,6 @@ class ArticleById extends React.Component {
       });
   };
 
-  // changeVotes = num => {
-  //   //move the route into .api articles passed as a parameter x
-  //   let route = `/articles/${this.state.article.article_id}`;
-  //   api.patchVotes(route, num);
-  //   this.setState(currentState => {
-  //     return {
-  //       article: {
-  //         ...currentState.article,
-  //         votes: currentState.article.votes + num
-  //       }
-  //     };
-  //   });
-  // };
-
-  // componentDidUpdate(oldProps, oldState) {
-  //   if (oldState.votes !== this.state.votes) {
-  //     this.getArticle();
-  //   }
-  // }
-
   componentDidMount() {
     this.getArticle();
   }

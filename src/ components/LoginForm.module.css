@@ -5,3 +5,16 @@
   font-weight: bolder;
   font-style: italic;
 }
+
+.form button {
+  text-align: center;
+  color: red;
+  text-decoration: none;
+  background-color: lavender;
+  border-radius: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 2pt;
+  text-decoration: yellow;
+  width: 6rem;
+  height: 2rem;
+}
