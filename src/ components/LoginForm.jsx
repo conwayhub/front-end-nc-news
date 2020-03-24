@@ -1,5 +1,7 @@
 import React from "react";
 import * as api from "../api";
+import styles from "./LoginForm.module.css";
+
 
 class LoginForm extends React.Component {
   state = { user: "jessjelly", error: null };
@@ -23,7 +25,7 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className={styles.form} onSubmit={this.handleSubmit}>
         <label>
           Enter Username:{" "}
           <input

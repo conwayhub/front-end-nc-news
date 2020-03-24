@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import * as api from "../api";
 import ArticleCard from "./ArticleCard.jsx";
-import SortByForm from "./sortByForm.jsx";
+import SortByForm from "./SortByForm.jsx";
 import Loading from "./Loading";
 import Error from "./Error";
 
 class AllArticles extends Component {
-  state = { loading: true, articles: null, error: null };
+  state = { loading: true, articles: null, error: null, sort_by: null };
 
   handleSortSubmit = sortObject => {
     this.setState({ sort_by: sortObject });
-    this.getAllArticles();
   };
 
   getAllArticles = () => {
@@ -18,12 +17,13 @@ class AllArticles extends Component {
     if (this.props.topic !== undefined) {
       passingParams.topic = this.props.topic;
     }
-    if (this.state.sort_by !== undefined) {
+    if (this.state.sort_by !== null) {
       passingParams.sort_by = this.state.sort_by;
     }
     api
       .fetchArticles(passingParams)
       .then(res => {
+        console.log("your articles, maam", res.data.articles[0]);
         const { articles } = res.data;
         this.setState({ articles, loading: false, error: null });
       })
@@ -50,12 +50,14 @@ class AllArticles extends Component {
     ) : this.state.loading ? (
       <Loading />
     ) : (
-      <ul>
+      <>
         <SortByForm handleSortSubmit={this.handleSortSubmit} />
-        {this.state.articles.map(article => {
-          return <ArticleCard key={article.article_id} article={article} />;
-        })}
-      </ul>
+        <ul>
+          {this.state.articles.map(article => {
+            return <ArticleCard key={article.article_id} article={article} />;
+          })}
+        </ul>
+      </>
     );
   }
 }

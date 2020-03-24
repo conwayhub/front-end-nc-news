@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from "./SortByForm.module.css";
 
 class SortByForm extends Component {
   state = { sort_by: null };
@@ -11,6 +12,7 @@ class SortByForm extends Component {
   render() {
     return (
       <form
+        className={styles.form}
         onSubmit={event => {
           event.preventDefault();
           this.props.handleSortSubmit(this.state.sort_by);

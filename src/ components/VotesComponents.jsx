@@ -7,7 +7,7 @@ class VotesComponent extends React.Component {
   changeVotes = num => {
     api.patchVotes(this.props.type, this.props.id, num);
     this.setState(currentState => {
-      return { votes: currentState.votes + num };
+      return { votes: currentState.votes + num, disabled: true };
     });
   };
 
@@ -26,6 +26,7 @@ class VotesComponent extends React.Component {
           onClick={event => {
             this.handleClick(1);
           }}
+          disabled={this.state.disabled}
         >
           Reward
         </button>
@@ -33,6 +34,7 @@ class VotesComponent extends React.Component {
           onClick={event => {
             this.handleClick(-1);
           }}
+          disabled={this.state.disabled}
         >
           Punish
         </button>

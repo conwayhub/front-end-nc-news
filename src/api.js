@@ -5,6 +5,7 @@ const instance = axios.create({
 });
 
 export const fetchArticles = params => {
+  console.log(params);
   return instance.get("/articles", { params });
 };
 
