@@ -10,6 +10,7 @@ import LoginForm from "./ components/LoginForm";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import {
+  faSkull,
   faPizzaSlice,
   faFutbol,
   faGlobeAmericas,
@@ -17,7 +18,15 @@ import {
   faCog
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(fab, faPizzaSlice, faFutbol, faGlobeAmericas, faCoffee, faCog);
+library.add(
+  fab,
+  faPizzaSlice,
+  faFutbol,
+  faGlobeAmericas,
+  faCoffee,
+  faCog,
+  faSkull
+);
 
 class App extends React.Component {
   state = { user: "" };
