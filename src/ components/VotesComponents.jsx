@@ -1,5 +1,6 @@
 import React from "react";
 import * as api from "../api";
+import styles from "./VotesComponent.module.css";
 
 class VotesComponent extends React.Component {
   state = { votes: 0 };
@@ -23,20 +24,26 @@ class VotesComponent extends React.Component {
         </p>
 
         <button
+          className={styles.upVote}
           onClick={event => {
             this.handleClick(1);
           }}
           disabled={this.state.disabled}
         >
-          Reward
+          <span role="img" aria-label="Red Heart Emoji">
+            ❤️
+          </span>
         </button>
         <button
+          className={styles.downVote}
           onClick={event => {
             this.handleClick(-1);
           }}
           disabled={this.state.disabled}
         >
-          Punish
+          <span role="img" aria-label="Skull Emoji">
+            💀
+          </span>
         </button>
       </>
     );

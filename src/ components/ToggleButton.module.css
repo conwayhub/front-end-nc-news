@@ -1,17 +1,4 @@
-.form {
-  padding: 10px;
-  background-color: gold;
-  color: red;
-  font-weight: bolder;
-  font-style: italic;
-}
-
-.form input {
-  border-radius: 3pt;
-  height: 16pt;
-}
-
-.form button {
+.ToggleButton {
   text-align: center;
   color: red;
   text-decoration: none;
@@ -19,10 +6,10 @@
   border-radius: 12px;
   font-family: Arial, Helvetica, sans-serif;
   padding: 2pt;
-  width: 6rem;
+  width: 10rem;
   height: 2rem;
 }
 
-.form button:hover {
+.ToggleButton:hover {
   background: linear-gradient(#a3c8c9, #fff5e6);
 }

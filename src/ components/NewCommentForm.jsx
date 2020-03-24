@@ -1,5 +1,6 @@
 import React from "react";
 import * as api from "../api";
+import styles from "./NewCommentForm.module.css";
 
 //REMEMBER TO DEAL WITH EMPTY COMMENTS AND ERROR HANDLING x
 
@@ -45,14 +46,14 @@ class NewCommentForm extends React.Component {
       <>
         <h3>Post a new comment</h3>{" "}
         <p>Hi, {this.props.user}! Want to post a comment?</p>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className={styles.form}>
           <label>
-            Comment:
-            <input
-              type="text"
+            <textarea
+              rows="5"
               value={this.state.comment}
               onChange={this.handleChange}
             />
+            <br />
             <button>Submit</button>
           </label>
         </form>

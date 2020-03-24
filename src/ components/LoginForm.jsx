@@ -26,12 +26,13 @@ class LoginForm extends React.Component {
     return (
       <form className={styles.form} onSubmit={this.handleSubmit}>
         <label>
-          Enter Username:{" "}
+          Enter Username:&emsp;
           <input
             type="text"
             value={this.state.user}
             onChange={this.handleChange}
           />
+          &emsp;
           <button>LOG IN</button> {this.state.error && <>User Not Found</>}
         </label>
       </form>

@@ -18,12 +18,13 @@ class SortByForm extends Component {
           this.props.handleSortSubmit(this.state.sort_by);
         }}
       >
-        Sort Articles By:
+        Sort Articles By:&emsp;
         <select onChange={this.handleChange} id="sort_by" name="sort_by">
           <option value="created_at">Date</option>
           <option value="comment_count">Comments</option>
           <option value="votes">Votes</option>
         </select>
+        &emsp;
         <button>SORT</button>
       </form>
     );

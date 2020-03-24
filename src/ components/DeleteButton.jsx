@@ -1,5 +1,6 @@
 import React from "react";
 import * as api from "../api";
+import styles from "./DeleteButton.module.css";
 
 const DeleteButton = props => {
   const handleClick = event => {
@@ -7,7 +8,19 @@ const DeleteButton = props => {
     api.deleteComment(props.id);
   };
 
-  return <button onClick={handleClick}>Delete</button>;
+  return (
+    <>
+      <label>
+        <button onClick={handleClick} className={styles.deleteButton}>
+          <span role="img" aria-label="Red Cross Emoji">
+            {" "}
+            ❌
+          </span>
+        </button>{" "}
+        Delete
+      </label>
+    </>
+  );
 };
 
 export default DeleteButton;
