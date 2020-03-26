@@ -10,12 +10,14 @@ class SortByForm extends Component {
   };
 
   render() {
+    const { handleSortSubmit } = this.props;
+    const { sort_by } = this.state;
     return (
       <form
         className={styles.form}
         onSubmit={event => {
           event.preventDefault();
-          this.props.handleSortSubmit(this.state.sort_by);
+          handleSortSubmit(sort_by);
         }}
       >
         Sort Articles By:&emsp;
@@ -32,12 +34,3 @@ class SortByForm extends Component {
 }
 
 export default SortByForm;
-
-/* "author",
-      "title",
-      "article_id",
-      "body",
-      "topic",
-      "created_at",
-      "votes",
-      "comment_count"*/

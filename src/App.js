@@ -41,13 +41,14 @@ class App extends React.Component {
   };
 
   render() {
+    const { user } = this.state;
     return (
       <div>
-        {this.state.user === "" && <LoginForm setUser={this.setUser} />}
-        {this.state.user && (
+        {user === "" && <LoginForm setUser={this.setUser} />}
+        {user && (
           <div className={styles.loggedIn}>
-            <img alt="user avatar" src={this.state.user.avatar_url} />
-            Hi {this.state.user.name}, you are logged in!{" "}
+            <img alt="user avatar" src={user.avatar_url} />
+            Hi {user.name}, you are logged in!{" "}
             <button onClick={this.handleLogOut}>LOG OUT</button>
           </div>
         )}
@@ -57,10 +58,7 @@ class App extends React.Component {
           <AllArticlesByTopic path="/articles/" />
           <AllArticlesByTopic path="/articles/*" />
           <AllArticlesByTopic path="/articles/topic/:topic" />
-          <ArticleById
-            path="/articles/id/:id"
-            user={this.state.user.username}
-          />
+          <ArticleById path="/articles/id/:id" user={user.username} />
           <Error default />
         </Router>
       </div>

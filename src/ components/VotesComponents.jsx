@@ -6,7 +6,8 @@ class VotesComponent extends React.Component {
   state = { votes: 0 };
 
   changeVotes = num => {
-    api.patchVotes(this.props.type, this.props.id, num);
+    const { type, id } = this.props;
+    api.patchVotes(type, id, num);
     this.setState(currentState => {
       return { votes: currentState.votes + num, disabled: true };
     });
@@ -16,11 +17,12 @@ class VotesComponent extends React.Component {
     this.changeVotes(num);
   };
   render() {
+    const { votes, disabled } = this.state;
     return (
       <>
         <p>
           <b>Votes: </b>
-          {this.state.votes + this.props.votes}
+          {votes + this.props.votes}
         </p>
 
         <button
@@ -28,7 +30,7 @@ class VotesComponent extends React.Component {
           onClick={event => {
             this.handleClick(1);
           }}
-          disabled={this.state.disabled}
+          disabled={disabled}
         >
           <span role="img" aria-label="Red Heart Emoji">
             ❤️
@@ -39,7 +41,7 @@ class VotesComponent extends React.Component {
           onClick={event => {
             this.handleClick(-1);
           }}
-          disabled={this.state.disabled}
+          disabled={disabled}
         >
           <span role="img" aria-label="Skull Emoji">
             💀

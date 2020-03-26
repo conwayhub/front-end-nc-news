@@ -29,7 +29,7 @@ class ArticleById extends React.Component {
   }
 
   render() {
-    let {
+    const {
       article_id,
       title,
       body,
@@ -39,11 +39,14 @@ class ArticleById extends React.Component {
       created_at,
       comment_count
     } = this.state.article;
-    return this.state.error ? (
+    const { error, loading } = this.state;
+    const { user, id } = this.props;
+
+    return error ? (
       <>
-        <Error error={this.state.error} />
+        <Error error={error} />
       </>
-    ) : this.state.loading === true ? (
+    ) : loading === true ? (
       <>
         <Loading />
       </>
@@ -58,10 +61,10 @@ class ArticleById extends React.Component {
         </p>
         <VotesComponent type="articles" id={article_id} votes={votes} />
         <ToggleButton component=" New Comment">
-          <NewCommentForm user={this.props.user} article_id={article_id} />
+          <NewCommentForm user={user} article_id={article_id} />
         </ToggleButton>
         <ToggleButton component=" All Comments">
-          <CommentList id={this.props.id} user={this.props.user} />
+          <CommentList id={id} user={user} />
         </ToggleButton>
       </>
     );

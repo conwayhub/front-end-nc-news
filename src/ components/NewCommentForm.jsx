@@ -1,8 +1,7 @@
 import React from "react";
 import * as api from "../api";
 import styles from "./NewCommentForm.module.css";
-
-//REMEMBER TO DEAL WITH EMPTY COMMENTS AND ERROR HANDLING x
+import VotesComponent from "./VotesComponents";
 
 class NewCommentForm extends React.Component {
   state = {
@@ -10,16 +9,24 @@ class NewCommentForm extends React.Component {
     error: null,
     comment: "",
     posted: null,
-    unposted: false
+    unposted: false,
+    comment_id: null
   };
 
   handleSubmit = event => {
+    const { article_id, user } = this.props;
+    const { comment } = this.state;
     event.preventDefault();
-    if (this.state.comment === "") {
+    if (comment === "") {
       this.setState({ unposted: true });
     } else {
       api
-        .postComment(this.props.article_id, this.props.user, this.state.comment)
+        .postComment(article_id, user, comment)
+        .then(res => {
+          const { comment_id } = res.data.comment;
+          this.setState({ comment_id });
+        })
+
         .catch(err => {
           console.dir(err);
           this.setState({ error: err });
@@ -40,35 +47,32 @@ class NewCommentForm extends React.Component {
   };
 
   render() {
-    return this.props.user === undefined ? (
+    const { user } = this.props;
+    const { comment, unposted, posted, comment_id } = this.state;
+    return user === undefined ? (
       <h3>Hi Guest! Log in to post a comment</h3>
     ) : (
       <>
-        <h3>Post a new comment</h3>{" "}
-        <p>Hi, {this.props.user}! Want to post a comment?</p>
+        <h3>Post a new comment</h3> <p>Hi, {user}! Want to post a comment?</p>
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <label>
-            <textarea
-              rows="5"
-              value={this.state.comment}
-              onChange={this.handleChange}
-            />
+            <textarea rows="5" value={comment} onChange={this.handleChange} />
             <br />
             <button>Submit</button>
           </label>
         </form>
-        {this.state.unposted && <p>No comment entered!</p>}
-        {this.state.posted && (
+        {unposted && <p>No comment entered!</p>}
+        {posted && (
           <>
             <p>Great! Comment Posted!</p>
             <ul>
               <li>
                 <p>
-                  <b>User: </b> {this.props.user}
+                  <b>User: </b> {user}
                 </p>
                 <b>Comment:</b>
-                <p>{this.state.posted}</p>
-                <b>Votes: </b>0
+                <p>{posted}</p>
+                <VotesComponent type="comments" id={comment_id} votes={0} />
               </li>
             </ul>
           </>

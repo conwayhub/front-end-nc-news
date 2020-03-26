@@ -10,9 +10,10 @@ class LoginForm extends React.Component {
   };
 
   handleSubmit = event => {
+    const { user } = this.state;
     event.preventDefault();
     api
-      .checkUser(this.state.user)
+      .checkUser(user)
       .then(res => {
         this.props.setUser(res.data.user);
       })
@@ -23,17 +24,14 @@ class LoginForm extends React.Component {
   };
 
   render() {
+    const { user, error } = this.state;
     return (
       <form className={styles.form} onSubmit={this.handleSubmit}>
         <label>
           Enter Username:&emsp;
-          <input
-            type="text"
-            value={this.state.user}
-            onChange={this.handleChange}
-          />
+          <input type="text" value={user} onChange={this.handleChange} />
           &emsp;
-          <button>LOG IN</button> {this.state.error && <>User Not Found</>}
+          <button>LOG IN</button> {error && <>User Not Found</>}
         </label>
       </form>
     );

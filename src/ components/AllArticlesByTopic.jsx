@@ -14,17 +14,18 @@ class AllArticles extends Component {
   };
 
   getAllArticles = () => {
+    const { sort_by } = this.state;
+
     let passingParams = {};
-    if (this.props.topic !== undefined) {
+    if (this.props.topic) {
       passingParams.topic = this.props.topic;
     }
-    if (this.state.sort_by !== null) {
-      passingParams.sort_by = this.state.sort_by;
+    if (sort_by !== null) {
+      passingParams.sort_by = sort_by;
     }
     api
       .fetchArticles(passingParams)
       .then(res => {
-        console.log("your articles, maam", res.data.articles[0]);
         const { articles } = res.data;
         this.setState({ articles, loading: false, error: null });
       })
@@ -34,9 +35,11 @@ class AllArticles extends Component {
   };
 
   componentDidUpdate(oldProps, oldState) {
+    const { sort_by } = this.state;
+
     if (oldProps.topic !== this.props.topic) {
       this.getAllArticles();
-    } else if (oldState.sort_by !== this.state.sort_by) {
+    } else if (oldState.sort_by !== sort_by) {
       this.getAllArticles();
     }
   }
@@ -46,15 +49,17 @@ class AllArticles extends Component {
   }
 
   render() {
-    return this.state.error ? (
+    const { loading, error, articles } = this.state;
+
+    return error ? (
       <Error error={this.state.error} />
-    ) : this.state.loading ? (
+    ) : loading ? (
       <Loading />
     ) : (
       <>
         <SortByForm handleSortSubmit={this.handleSortSubmit} />
         <ul className={styles.ul}>
-          {this.state.articles.map(article => {
+          {articles.map(article => {
             return <ArticleCard key={article.article_id} article={article} />;
           })}
         </ul>

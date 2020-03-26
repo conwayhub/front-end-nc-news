@@ -4,7 +4,8 @@ import styles from "./ArticleCard.module.css";
 
 const ArticleCard = props => {
   const article = props.article;
-  const string = "/articles/id/" + props.article.article_id;
+  const string = "/articles/id/" + article.article_id;
+
   return (
     <li className={styles.Card}>
       <Link to={string} className={styles.link}>

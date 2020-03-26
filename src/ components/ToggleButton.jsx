@@ -4,20 +4,20 @@ import styles from "./ToggleButton.module.css";
 class ToggleButton extends React.Component {
   state = { visible: false };
 
-  showComponent = () => {
+  showComponent = event => {
     this.setState(currentState => {
       return { visible: !currentState.visible };
     });
   };
   render() {
+    const { visible } = this.state;
+    const { component, children } = this.props;
     return (
       <>
         <button onClick={this.showComponent} className={styles.ToggleButton}>
-          {this.state.visible
-            ? "Hide" + this.props.component
-            : this.props.component}
+          {visible ? "Hide" + component : component}
         </button>
-        {this.state.visible && <div>{this.props.children}</div>}
+        {visible && <div>{children}</div>}
       </>
     );
   }

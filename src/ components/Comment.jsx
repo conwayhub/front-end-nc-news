@@ -10,9 +10,11 @@ class CommentCard extends React.Component {
   };
 
   render() {
-    const { author, body, votes, comment_id } = this.props.comment;
+    const { deleted } = this.state;
+    const { user, comment } = this.props;
+    const { author, body, votes, comment_id } = comment;
 
-    return this.state.deleted === true ? (
+    return deleted === true ? (
       <p>Comment Deleted :)</p>
     ) : (
       <li>
@@ -23,7 +25,7 @@ class CommentCard extends React.Component {
         <p>{body}</p>
 
         <>
-          {this.props.user === this.props.comment.author && (
+          {user === author && (
             <DeleteButton setAsDeleted={this.setAsDeleted} id={comment_id} />
           )}
         </>
