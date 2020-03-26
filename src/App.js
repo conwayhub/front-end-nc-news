@@ -3,6 +3,7 @@ import styles from "./App.module.css";
 import { Router } from "@reach/router";
 import Header from "./ components/Header";
 import Nav from "./ components/Nav";
+import Home from "./ components/Home";
 import AllArticlesByTopic from "./ components/AllArticlesByTopic";
 import ArticleById from "./ components/ArticleById";
 import Error from "./ components/Error";
@@ -59,6 +60,7 @@ class App extends React.Component {
           <AllArticlesByTopic path="/articles/*" />
           <AllArticlesByTopic path="/articles/topic/:topic" />
           <ArticleById path="/articles/id/:id" user={user.username} />
+          <Home path="/" />
           <Error default />
         </Router>
       </div>

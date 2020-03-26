@@ -1,0 +1,22 @@
+.main {
+  text-align: center;
+  display: flexbox;
+  width: 90%;
+  background: gold;
+  border-radius: 12pt;
+  padding: 1rem;
+  margin: 5% auto;
+  color: red;
+}
+
+.icon {
+  color: black;
+  border-radius: 50%;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgb(0, 102, 97)),
+    to(turquoise)
+  );
+}
