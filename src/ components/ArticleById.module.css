@@ -1,0 +1,9 @@
+.article {
+  display: flexbox;
+  width: 90%;
+  background: gold;
+  border-radius: 12pt;
+  padding: 1rem;
+  margin: 5% auto;
+  color: red;
+}

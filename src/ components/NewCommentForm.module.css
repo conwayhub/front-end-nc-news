@@ -1,7 +1,9 @@
 .form {
+  background: red;
   padding: 10px;
   font-weight: bolder;
   font-style: italic;
+  border-radius: 12pt;
 }
 
 .form textarea {

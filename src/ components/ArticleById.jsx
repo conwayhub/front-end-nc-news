@@ -6,6 +6,7 @@ import ToggleButton from "./ToggleButton";
 import CommentList from "./CommentList";
 import VotesComponent from "./VotesComponents";
 import NewCommentForm from "./NewCommentForm";
+import styles from "./ArticleById.module.css";
 
 class ArticleById extends React.Component {
   state = { article: {}, loading: true, error: null };
@@ -51,7 +52,7 @@ class ArticleById extends React.Component {
         <Loading />
       </>
     ) : (
-      <>
+      <article className={styles.article}>
         <h1>{title}</h1>
         <b> Written by: </b> {author} <b> Published: </b> {created_at}
         <b> Topic: </b> {topic}
@@ -66,7 +67,7 @@ class ArticleById extends React.Component {
         <ToggleButton component=" All Comments">
           <CommentList id={id} user={user} />
         </ToggleButton>
-      </>
+      </article>
     );
   }
 }

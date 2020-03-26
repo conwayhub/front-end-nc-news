@@ -3,6 +3,7 @@ import * as api from "../api";
 import Loading from "./Loading";
 import Error from "./Error";
 import CommentCard from "./Comment";
+import styles from "./CommentList.module.css";
 
 class CommentList extends React.Component {
   state = { commentArray: [], loading: true, error: null };
@@ -23,9 +24,8 @@ class CommentList extends React.Component {
       });
   };
   componentDidUpdate(prevProps, prevState) {
-    const { user } = this.props.user;
-    if (prevProps.user !== user) {
-      this.setState({ user: user });
+    if (prevProps.user !== this.props.user) {
+      this.setState({ user: this.props.user });
     }
   }
 
@@ -45,7 +45,7 @@ class CommentList extends React.Component {
         <Loading />
       </>
     ) : (
-      <ul>
+      <ul className={styles.List}>
         {commentArray.map(comment => {
           return (
             <CommentCard
